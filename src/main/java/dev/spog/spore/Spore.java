@@ -8,6 +8,10 @@ public class Spore {
     public static void init(Plugin inputPlugin) {
         plugin = inputPlugin;
         plugin.getServer().getLogger().info("[Spore] Initialized by " + inputPlugin.getName());
+
+        if (!plugin.getDataFolder().exists()) {
+            plugin.getDataFolder().mkdir();
+        }
     }
 
     public static Plugin getPlugin() {

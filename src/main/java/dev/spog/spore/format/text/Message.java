@@ -40,9 +40,15 @@ public class Message {
         player.sendMessage(asComponent());
     }
 
-    public void send(String permission) {
+    public void announce(String permission) {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (!player.hasPermission(permission)) continue;
+            player.sendMessage(asComponent());
+        }
+    }
+
+    public void announce() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(asComponent());
         }
     }
