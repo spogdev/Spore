@@ -16,7 +16,7 @@ Spore (Spog Core) is a library containing commonly used classes frequently copy 
 <dependency>
     <groupId>dev.spog</groupId>
     <artifactId>spore</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
     <scope>provided</scope>
 </dependency>
 ```
