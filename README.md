@@ -20,3 +20,7 @@ Spore (Spog Core) is a library containing commonly used classes frequently copy 
     <scope>provided</scope>
 </dependency>
 ```
+### Kotlin Gradle
+```java
+implementation("dev.spog:spore:1.1.1")
+```
