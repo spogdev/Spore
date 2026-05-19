@@ -1,6 +1,6 @@
 package dev.spog.spore.format;
 
-public abstract class IntFormat {
+public class IntFormat {
     public static String secondToDurationString(int i) {
         if (i != 0) {
             int min = Math.floorDiv(i, 60);
