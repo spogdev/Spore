@@ -7,6 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Message {
     private String message;
 
@@ -51,6 +54,14 @@ public class Message {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage(asComponent());
         }
+    }
+
+    public static List<TextComponent> processStringList(List<String> stringList) {
+        List<TextComponent> components = new ArrayList<>();
+        for (String line : stringList) {
+            components.add(Message.of(line).asComponent());
+        }
+        return components;
     }
 
     public Message toSmallCaps() {

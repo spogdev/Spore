@@ -179,8 +179,7 @@ public class Schematic {
                     new String[paletteArray.size()];
 
             for (int i = 0; i < entries.length; i++) {
-                entries[i] =
-                        paletteArray.get(i).getAsString();
+                entries[i] = paletteArray.get(i).getAsString();
             }
 
             s.palette.setEntries(entries);
@@ -244,6 +243,18 @@ public class Schematic {
         if (localZ < 0 || localZ >= length) return false;
 
         int i = index(localX, localY, localZ);
+
+        return palette.translate(blocks[i])
+                .getMaterial() != Material.AIR;
+    }
+
+    public boolean hasLocalBlock(int x, int y, int z) {
+
+        if (x < 0 || x >= width) return false;
+        if (y < 0 || y >= height) return false;
+        if (z < 0 || z >= length) return false;
+
+        int i = index(x, y, z);
 
         return palette.translate(blocks[i])
                 .getMaterial() != Material.AIR;
