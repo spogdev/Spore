@@ -1,8 +1,11 @@
 package dev.spog.spore.format.text;
 
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.ShadowColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.util.ARGBLike;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +15,7 @@ import java.util.List;
 
 public class Message {
     private String message;
+    private String shadowColor = null;
 
     public Message(String message) {
         this.message = message;
@@ -36,7 +40,15 @@ public class Message {
                 .useUnusualXRepeatedCharacterHexFormat()
                 .build();
 
-        return legacy_hex.deserialize(this.message);
+        Component deserialized = legacy_hex.deserialize(this.message);
+
+        ShadowColor shadowHighlight = shadowColor == null ? ShadowColor.none() : ShadowColor.fromHexString(shadowColor);
+
+        return (TextComponent) deserialized.shadowColor(shadowHighlight);
+    }
+
+    public void shadow(String hex) {
+        shadowColor = hex;
     }
 
     public void send(Audience player) {
